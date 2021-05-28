@@ -1,3 +1,5 @@
+const URL = 'https://pixabay.com/api'
+const KEY = '21813787-5b33d57d4a7410a6824d2f569';
 export default class ApiService {
 
     constructor() {
@@ -7,15 +9,15 @@ export default class ApiService {
     
     fetchGallery() {
         console.log(this);
-    const key = '21813787-5b33d57d4a7410a6824d2f569';
     
-    return fetch(`https://pixabay.com/api/?image_type=photo&orientation=horizontal&q=${this.searchQuery}&page=${this.page}&per_page=12&key=${key}`)
+    
+    return fetch(`${URL}/?image_type=photo&orientation=horizontal&q=${this.searchQuery}&page=${this.page}&per_page=12&key=${KEY}`)
         .then(response => response.json())
-        .then(data => {
+        .then(({hits})=> {
             // console.log(data);
             this.incrementPage();
 
-            return data.hits;
+            return hits;
         })
         .catch(error => {
             console.log(error);
