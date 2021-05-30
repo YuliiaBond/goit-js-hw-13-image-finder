@@ -1,6 +1,8 @@
 import ApiService from './apiService';
 import cardTpl from '../templates/card.hbs';
 import LoadMoreBtn from './load-more-btn';
+import { notification } from './notify';
+import error from './error';
 
 const refs = {
     searchForm: document.querySelector('#search-form'),
@@ -31,7 +33,7 @@ function onSearch(event) {
     clearGalleryContainer();
     fetchGallery();
     } else {
-        alert('Repeat your request!')
+        error();
         }
 
     
