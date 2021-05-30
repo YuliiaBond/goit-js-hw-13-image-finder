@@ -25,14 +25,16 @@ function onSearch(event) {
     
     apiService.query = event.currentTarget.elements.query.value;
 
-    if (apiService.query === '') {
-        return alert('Repeat your request!')
-    }
-
+    if (apiService.query !== ' ' && apiService.query !== '') {
     loadMoreBtn.show();
     apiService.resetPage();
     clearGalleryContainer();
     fetchGallery();
+    } else {
+        alert('Repeat your request!')
+        }
+
+    
 }
 
 function fetchGallery() {
@@ -40,6 +42,7 @@ function fetchGallery() {
     apiService.fetchGallery().then(hits => {
         appenCardMarkup(hits);
         loadMoreBtn.enable();
+        loadMoreBtn.refs.button.scrollIntoView({behavior: 'smooth', block: 'end',});
     });
 }
 
