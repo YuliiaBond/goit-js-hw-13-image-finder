@@ -15,9 +15,11 @@ export default class ApiService {
         .then(response => response.json())
         .then(({hits})=> {
             // console.log(data);
+            
             this.incrementPage();
 
             return hits;
+            
         })
         .catch(error => {
             console.log(error);

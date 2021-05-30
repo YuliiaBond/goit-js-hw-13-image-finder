@@ -1,7 +1,7 @@
 import ApiService from './apiService';
 import cardTpl from '../templates/card.hbs';
 import LoadMoreBtn from './load-more-btn';
-import { notification } from './notify';
+// import { notification } from './notify';
 import error from './error';
 
 const refs = {
@@ -27,7 +27,10 @@ function onSearch(event) {
     
     apiService.query = event.currentTarget.elements.query.value;
 
-    if (apiService.query !== ' ' && apiService.query !== '') {
+    // console.log(apiService.query);
+
+    if (apiService.query !== ' ' && apiService.query !== '' ) {
+        
     loadMoreBtn.show();
     apiService.resetPage();
     clearGalleryContainer();
