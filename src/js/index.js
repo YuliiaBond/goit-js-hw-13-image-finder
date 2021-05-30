@@ -38,8 +38,6 @@ function onSearch(event) {
     } else {
         error();
         }
-
-    
 }
 
 function fetchGallery() {
