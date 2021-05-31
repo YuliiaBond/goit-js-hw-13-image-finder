@@ -43,8 +43,17 @@ function onSearch(event) {
 function fetchGallery() {
     loadMoreBtn.disable();
     apiService.fetchGallery().then(hits => {
-        appenCardMarkup(hits);
-        loadMoreBtn.enable();
+
+        if (hits.length < 12) {
+            console.log(hits.length);
+            loadMoreBtn.hide();
+            appenCardMarkup(hits);
+            return;
+        }
+            appenCardMarkup(hits);
+            loadMoreBtn.enable();
+        
+        
         // loadMoreBtn.refs.button.scrollIntoView({ behavior: 'smooth', block: 'end', });
         window.scrollTo({
             top: document.documentElement.offsetHeight,
