@@ -25,7 +25,7 @@ loadMoreBtn.refs.button.addEventListener('click', fetchGallery);
 function onSearch(event) {
     event.preventDefault();
     
-    apiService.query = event.currentTarget.elements.query.value;
+    apiService.query = event.currentTarget.elements.query.value.trim();
 
     // console.log(apiService.query);
 
@@ -45,8 +45,14 @@ function fetchGallery() {
     apiService.fetchGallery().then(hits => {
         appenCardMarkup(hits);
         loadMoreBtn.enable();
-        loadMoreBtn.refs.button.scrollIntoView({behavior: 'smooth', block: 'end',});
+        // loadMoreBtn.refs.button.scrollIntoView({ behavior: 'smooth', block: 'end', });
+        window.scrollTo({
+            top: document.documentElement.offsetHeight,
+            behavior: 'smooth',});
     });
+        
+
+        
 }
 
 function appenCardMarkup(hits) {
