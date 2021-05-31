@@ -53,11 +53,14 @@ function fetchGallery() {
             appenCardMarkup(hits);
             loadMoreBtn.enable();
         
-        
-        // loadMoreBtn.refs.button.scrollIntoView({ behavior: 'smooth', block: 'end', });
-        window.scrollTo({
-            top: document.documentElement.offsetHeight,
-            behavior: 'smooth',});
+        if (apiService.page > 2) {
+            console.log(apiService.page);
+            // loadMoreBtn.refs.button.scrollIntoView({ behavior: 'smooth', block: 'end', });
+            window.scrollTo({
+                top: document.documentElement.offsetHeight,
+                behavior: 'smooth',
+            });
+        }
     });
         
 
